@@ -1,17 +1,13 @@
-import Navbar from "../components/Navbar";
+import Navbar from "@/components/Navbar";
+import Hero from "@/sections/Hero";
+import About from "@/sections/About";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-
-      <main className="min-h-screen bg-gray-100 pt-24">
-        <section className="flex h-screen items-center justify-center">
-          <h1 className="text-5xl font-bold">
-            Welcome to Etanworks
-          </h1>
-        </section>
-      </main>
+      <Hero />
+      <About />
     </>
   );
 }
