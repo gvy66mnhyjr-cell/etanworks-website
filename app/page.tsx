@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/sections/Hero";
 import About from "@/sections/About";
 import Services from "@/sections/Services";
+import WhyChooseUs from "@/sections/WhyChooseUs";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Services />
+      <WhyChooseUs />
       <About />
     </>
   );
