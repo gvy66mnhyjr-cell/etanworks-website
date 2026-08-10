@@ -12,10 +12,10 @@ export default function EquipmentHero({
   heroImage,
 }: EquipmentHeroProps) {
   return (
-    <section className="relative h-[65vh] w-full overflow-hidden">
+    <section className="relative h-[65vh] min-h-[500px] overflow-hidden">
       <Image
         src={heroImage}
-        alt={name}
+        alt={`${name} equipment`}
         fill
         priority
         sizes="100vw"
@@ -34,9 +34,7 @@ export default function EquipmentHero({
             {name}
           </h1>
 
-          <p className="mt-4 text-lg text-gray-200">
-            {category}
-          </p>
+          <p className="mt-4 text-lg text-gray-200">{category}</p>
         </div>
       </div>
     </section>

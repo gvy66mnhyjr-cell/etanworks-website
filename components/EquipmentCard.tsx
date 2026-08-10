@@ -7,21 +7,16 @@ type EquipmentCardProps = {
     slug: string;
     name: string;
     category: string;
-
     heroImage: string;
     coverImage: string;
-
     gallery: string[];
-
     overview: string;
-
     specifications: {
       operatingWeight: string;
       bucketCapacity: string;
       engine: string;
       maxDigDepth: string;
     };
-
     applications: string[];
   };
 };
@@ -30,14 +25,15 @@ export default function EquipmentCard({
   equipment,
 }: EquipmentCardProps) {
   return (
-    <article className="group overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+    <article className="group overflow-hidden rounded-3xl bg-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl">
       {/* Image */}
       <div className="relative h-72 overflow-hidden">
         <Image
-          src={equipment.coverImage}
-          alt={equipment.name}
+          src={equipment.coverImage || equipment.heroImage}
+          alt={`${equipment.name} equipment`}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition duration-700 group-hover:scale-105"
         />
       </div>
 

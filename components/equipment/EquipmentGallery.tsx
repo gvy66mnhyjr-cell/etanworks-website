@@ -18,12 +18,12 @@ export default function EquipmentGallery({
 }: EquipmentGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  // Cover image comes first
-  const images = [coverImage, ...gallery];
+  // Use cover image first if it exists
+  const images = coverImage ? [coverImage, ...gallery] : gallery;
 
   return (
     <>
-      <section className="bg-gray-50 py-20">
+      <section className="py-20">
         <div className="mx-auto max-w-7xl px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
             Gallery
@@ -34,8 +34,8 @@ export default function EquipmentGallery({
           </h2>
 
           <p className="mt-4 max-w-3xl text-lg text-gray-600">
-            Browse high-quality images showcasing the equipment,
-            its capabilities and working condition.
+            Browse high-quality images showcasing the equipment, its
+            capabilities and working condition.
           </p>
 
           <p className="mt-2 text-sm text-gray-500">
@@ -45,22 +45,23 @@ export default function EquipmentGallery({
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {images.map((image, index) => (
               <button
-                key={index}
+                key={image}
+                type="button"
                 onClick={() => setSelectedIndex(index)}
                 className={`group relative overflow-hidden rounded-3xl ${
                   index === 0
-                    ? "lg:col-span-2 lg:row-span-2 h-[520px]"
+                    ? "h-[520px] lg:col-span-2 lg:row-span-2"
                     : "h-[250px]"
                 }`}
               >
                 <Image
                   src={image}
-                  alt={`${name} ${index + 1}`}
+                  alt={`${name} equipment image ${index + 1}`}
                   fill
                   sizes={
                     index === 0
-                      ? "(max-width:1024px) 100vw, 66vw"
-                      : "(max-width:1024px) 100vw, 33vw"
+                      ? "(max-width: 1024px) 100vw, 66vw"
+                      : "(max-width: 1024px) 100vw, 33vw"
                   }
                   className="object-cover transition duration-700 group-hover:scale-110"
                 />

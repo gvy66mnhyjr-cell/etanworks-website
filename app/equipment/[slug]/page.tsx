@@ -1,25 +1,71 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import {
-  getEquipmentBySlug,
-  getRelatedEquipment,
-} from "@/lib/equipment";
+import { getEquipmentBySlug } from "@/lib/equipment";
 
 import EquipmentHero from "@/components/equipment/EquipmentHero";
 import EquipmentOverview from "@/components/equipment/EquipmentOverview";
 import EquipmentSpecs from "@/components/equipment/EquipmentSpecs";
 import EquipmentApplications from "@/components/equipment/EquipmentApplications";
 import EquipmentGallery from "@/components/equipment/EquipmentGallery";
-import RelatedEquipment from "@/components/equipment/RelatedEquipment";
-import CallToAction from "@/components/CallToAction";
-
-import AnimateIn from "@/components/AnimateIn";
 
 type EquipmentPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+export async function generateMetadata({
+  params,
+}: EquipmentPageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  const equipment = getEquipmentBySlug(slug);
+
+  if (!equipment) {
+    return {
+      title: "Equipment Not Found | Etanworks",
+    };
+  }
+
+  const description =
+    equipment.overview.length > 160
+      ? `${equipment.overview.substring(0, 157)}...`
+      : equipment.overview;
+
+  return {
+    title: `${equipment.name} | Etanworks`,
+    description,
+
+    alternates: {
+      canonical: `/equipment/${equipment.slug}`,
+    },
+
+    openGraph: {
+      title: `${equipment.name} | Etanworks`,
+      description,
+      url: `https://etanworks.co.ke/equipment/${equipment.slug}`,
+      siteName: "Etanworks",
+      images: [
+        {
+          url: equipment.heroImage,
+          width: 1200,
+          height: 630,
+          alt: equipment.name,
+        },
+      ],
+      locale: "en_KE",
+      type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: `${equipment.name} | Etanworks`,
+      description,
+      images: [equipment.heroImage],
+    },
+  };
+}
 
 export default async function EquipmentPage({
   params,
@@ -32,55 +78,32 @@ export default async function EquipmentPage({
     notFound();
   }
 
-  const relatedEquipment = getRelatedEquipment(slug);
-
   return (
-    <main className="min-h-screen bg-white">
+    <main>
       <EquipmentHero
         name={equipment.name}
         category={equipment.category}
         heroImage={equipment.heroImage}
       />
 
-      <AnimateIn>
-        <EquipmentOverview
-          name={equipment.name}
-          overview={equipment.overview}
-        />
-      </AnimateIn>
+      <EquipmentOverview
+        name={equipment.name}
+        overview={equipment.overview}
+      />
 
-      <AnimateIn delay={0.1}>
-        <EquipmentSpecs
-          specifications={equipment.specifications}
-        />
-      </AnimateIn>
+      <EquipmentSpecs
+        specifications={equipment.specifications}
+      />
 
-      <AnimateIn delay={0.2}>
-        <EquipmentApplications
-          applications={equipment.applications}
-        />
-      </AnimateIn>
+      <EquipmentApplications
+        applications={equipment.applications}
+      />
 
-      <AnimateIn delay={0.3}>
-        <EquipmentGallery
-          coverImage={equipment.coverImage}
-          gallery={equipment.gallery}
-          name={equipment.name}
-        />
-      </AnimateIn>
-
-      <AnimateIn delay={0.4}>
-        <RelatedEquipment
-          equipment={relatedEquipment}
-        />
-      </AnimateIn>
-
-      <AnimateIn delay={0.5}>
-        <CallToAction
-          title={`Need the ${equipment.name} for Your Next Project?`}
-          description="Our modern equipment fleet and experienced operators are ready to support excavation, earthworks, site clearance and infrastructure projects across Kenya."
-        />
-      </AnimateIn>
+      <EquipmentGallery
+        coverImage={equipment.coverImage}
+        gallery={equipment.gallery}
+        name={equipment.name}
+      />
     </main>
   );
 }
