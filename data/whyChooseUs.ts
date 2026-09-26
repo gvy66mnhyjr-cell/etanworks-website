@@ -1,44 +1,30 @@
 export const whyChooseUs = [
   {
     id: 1,
-    icon: "👷",
-    title: "Experienced Professionals",
+    title: "One-Stop Engineering Partner",
     description:
-      "Our skilled engineers and operators deliver every project with expertise and attention to detail.",
+      "From structural design to supply and construction execution.",
+    icon: "Workflow",
   },
   {
     id: 2,
-    icon: "🚜",
-    title: "Modern Equipment",
+    title: "Kenyan-Based, Industry-Focused",
     description:
-      "We use reliable machinery and equipment to complete projects efficiently and safely.",
+      "Serving local and regional clients with insight and agility across consultancy and construction.",
+    icon: "MapPinned",
   },
   {
     id: 3,
-    icon: "🦺",
-    title: "Safety First",
+    title: "Quality & Compliance",
     description:
-      "Strict adherence to safety standards ensures the wellbeing of our team, clients and the public.",
+      "Adherence to NCA, KEBS, and global best practices.",
+    icon: "BadgeCheck",
   },
   {
     id: 4,
-    icon: "⏱️",
-    title: "On-Time Delivery",
+    title: "Timely Project Delivery",
     description:
-      "We carefully plan every project to meet deadlines without compromising quality.",
-  },
-  {
-    id: 5,
-    icon: "🏆",
-    title: "Quality Workmanship",
-    description:
-      "Every project is completed to the highest professional standards and client expectations.",
-  },
-  {
-    id: 6,
-    icon: "🇰🇪",
-    title: "Nationwide Service",
-    description:
-      "We proudly deliver engineering and construction solutions across Kenya.",
+      "Efficient logistics, dedicated teams and smart project management.",
+    icon: "Clock3",
   },
 ];

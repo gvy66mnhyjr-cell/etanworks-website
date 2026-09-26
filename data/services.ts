@@ -1,44 +1,30 @@
 export const services = [
   {
     id: 1,
-    title: "Earthworks & Excavation",
+    title: "Civil & Structural Works",
     description:
-      "Professional excavation, bulk earthworks, grading and site preparation for residential, commercial and infrastructure projects.",
-    icon: "🚜",
+      "Full civil engineering and structural construction services, including foundations, superstructures, retaining walls, culverts, bridges, drainage, sewerage and concrete works.",
+    icon: "Building2",
   },
   {
     id: 2,
-    title: "Civil Engineering",
+    title: "Structural Design & Consultancy",
     description:
-      "Comprehensive civil engineering solutions delivered with precision, safety and quality workmanship.",
-    icon: "🏗️",
+      "Structural analysis and design, engineering drawings, feasibility studies, technical audits, value engineering and regulatory compliance support.",
+    icon: "DraftingCompass",
   },
   {
     id: 3,
-    title: "Structural Design & Consultancy",
+    title: "Earthworks & Excavation",
     description:
-      "Innovative structural design and engineering consultancy tailored to every project's requirements.",
-    icon: "📐",
+      "Professional bulk excavation, trenching, site clearing, grading, cartaway, backfilling, soil compaction and roadbed preparation.",
+    icon: "Construction",
   },
   {
     id: 4,
-    title: "Building Construction",
-    description:
-      "Construction of residential, commercial and institutional developments from foundation to completion.",
-    icon: "🏢",
-  },
-  {
-    id: 5,
-    title: "Site Clearance & Preparation",
-    description:
-      "Efficient land clearing, demolition support and site preparation for smooth project execution.",
-    icon: "🚛",
-  },
-  {
-    id: 6,
     title: "Construction Materials Supply",
     description:
-      "Reliable supply of quality construction materials to support projects of every scale.",
-    icon: "📦",
+      "Reliable supply of quality construction materials including sand, ballast, hardcore, quarry chips, cement, reinforcement steel, binding wire and concrete products.",
+    icon: "Boxes",
   },
 ];

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+
 import { notFound } from "next/navigation";
+
 import {
   getProjectBySlug,
   getRelatedProjects,
@@ -37,7 +39,6 @@ export async function generateMetadata({
 
   return {
     title: project.name,
-
     description,
 
     alternates: {
@@ -49,6 +50,7 @@ export async function generateMetadata({
       description,
       url: `https://etanworks.co.ke/portfolio/${project.slug}`,
       siteName: "Etanworks",
+
       images: [
         {
           url: project.heroImage,
@@ -57,6 +59,7 @@ export async function generateMetadata({
           alt: project.name,
         },
       ],
+
       locale: "en_KE",
       type: "article",
     },
@@ -84,7 +87,7 @@ export default async function PortfolioProjectPage({
   const relatedProjects = getRelatedProjects(slug);
 
   return (
-    <main>
+    <main className="min-h-screen bg-black">
       <ProjectHero
         name={project.name}
         location={project.location}
@@ -101,16 +104,12 @@ export default async function PortfolioProjectPage({
         equipment={project.equipment}
       />
 
-      <section className="container mx-auto px-6 pb-20">
-        <ProjectGallery
-          title={project.name}
-          images={project.gallery}
-        />
-      </section>
-
-      <RelatedProjects
-        projects={relatedProjects}
+      <ProjectGallery
+        title={project.name}
+        images={project.gallery}
       />
+
+      <RelatedProjects projects={relatedProjects} />
     </main>
   );
 }

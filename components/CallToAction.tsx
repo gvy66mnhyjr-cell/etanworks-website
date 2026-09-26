@@ -17,7 +17,7 @@ export default function CallToAction({
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center px-6 text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.35em] text-orange-500">
-          Let's Build Together
+          Let&apos;s Build Together
         </p>
 
         <h2 className="mt-6 max-w-4xl text-4xl font-bold leading-tight text-white md:text-5xl">
@@ -30,8 +30,8 @@ export default function CallToAction({
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-orange-600 hover:scale-105"
+            href="/#contact"
+            className="inline-flex items-center justify-center rounded-xl bg-orange-500 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-orange-600"
           >
             Request a Quote
             <ArrowRight className="ml-3" size={20} />

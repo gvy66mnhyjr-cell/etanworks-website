@@ -10,28 +10,25 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Section Heading */}
-
         <div className="mb-16 text-center">
-
-          <p className="font-semibold uppercase tracking-widest text-yellow-500">
-            Our Services
+          <p className="font-semibold uppercase tracking-[0.25em] text-orange-500">
+            Our Core Services
           </p>
 
-          <h2 className="mt-4 text-4xl font-bold text-gray-900 md:text-5xl">
-            Engineering Solutions You Can Trust
+          <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+            Engineering Solutions Built to Deliver
           </h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600">
-            We provide reliable engineering and construction solutions
-            tailored to infrastructure, commercial and residential
-            developments across Kenya.
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-600">
+            From structural design and civil works to earthmoving and
+            construction materials supply, we provide practical solutions
+            tailored to infrastructure, commercial and residential projects
+            across Kenya.
           </p>
-
         </div>
 
         {/* Services Grid */}
-
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {services.map((service) => (
             <ServiceCard
               key={service.id}

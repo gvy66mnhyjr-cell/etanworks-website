@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 
@@ -11,14 +14,54 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const [showFullNav, setShowFullNav] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 20) {
+        setShowFullNav(true);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up
+        setShowFullNav(true);
+      } else {
+        // Scrolling down
+        setShowFullNav(false);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 bg-black/80">
-      <div className="container mx-auto flex items-center justify-between px-6 py-5">
-        <Link href="/">
+    <nav className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      <div className="container mx-auto flex items-start justify-between px-6 py-4">
+        {/* Persistent Logo */}
+        <Link
+          href="/"
+          aria-label="Etanworks Home"
+          className="pointer-events-auto rounded-lg bg-black/80 p-2 backdrop-blur-sm"
+        >
           <Logo />
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        {/* Full Navigation */}
+        <div
+          className={`pointer-events-auto hidden items-center gap-8 rounded-full bg-black/80 px-6 py-3 backdrop-blur-sm transition-all duration-300 md:flex ${
+            showFullNav
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-24 opacity-0 pointer-events-none"
+          }`}
+        >
           {navLinks.map((link) => (
             <Link
               key={link.name}

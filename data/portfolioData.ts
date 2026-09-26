@@ -26,15 +26,15 @@ const portfolioData: Project[] = [
     coverImage: "/images/portfolio/imaara-daima/cover.jpeg",
 
     gallery: [
-     "/images/portfolio/imaara-daima/gallery-1.jpeg",
-     "/images/portfolio/imaara-daima/gallery-2.jpeg",
-     "/images/portfolio/imaara-daima/gallery-3.jpeg",
-     "/images/portfolio/imaara-daima/gallery-4.jpeg",
-     "/images/portfolio/imaara-daima/gallery-5.jpeg",
-     "/images/portfolio/imaara-daima/gallery-6.jpeg",
-     "/images/portfolio/imaara-daima/gallery-7.jpeg",
-     "/images/portfolio/imaara-daima/gallery-8.jpeg",
-     "/images/portfolio/imaara-daima/gallery-9.jpeg",
+      "/images/portfolio/imaara-daima/gallery-1.jpeg",
+      "/images/portfolio/imaara-daima/gallery-2.jpeg",
+      "/images/portfolio/imaara-daima/gallery-3.jpeg",
+      "/images/portfolio/imaara-daima/gallery-4.jpeg",
+      "/images/portfolio/imaara-daima/gallery-5.jpeg",
+      "/images/portfolio/imaara-daima/gallery-6.jpeg",
+      "/images/portfolio/imaara-daima/gallery-7.jpeg",
+      "/images/portfolio/imaara-daima/gallery-8.jpeg",
+      "/images/portfolio/imaara-daima/gallery-9.jpeg",
     ],
 
     overview:
@@ -59,28 +59,23 @@ const portfolioData: Project[] = [
   {
     id: 2,
     slug: "sepu-affordable-housing",
-
     name: "SEPU Affordable Housing Project",
-
     location: "Konza, Kenya",
-
     status: "Completed",
-
     completionDate: "Completed",
 
     heroImage: "/images/portfolio/sepu/hero.jpeg",
     coverImage: "/images/portfolio/sepu/cover.jpeg",
 
     gallery: [
-     "/images/portfolio/sepu/gallery-1.jpeg",
-     "/images/portfolio/sepu/gallery-2.jpeg",
-     "/images/portfolio/sepu/gallery-3.jpg",
-     "/images/portfolio/sepu/gallery-4.jpeg",
-     "/images/portfolio/sepu/gallery-5.jpeg",
-     "/images/portfolio/sepu/gallery-6.jpeg",
-     "/images/portfolio/sepu/gallery-8.jpeg",
-     "/images/portfolio/sepu/gallery-9.jpeg",
-     "/images/portfolio/sepu/gallery-10.jpg",
+      "/images/portfolio/sepu/gallery-1.jpeg",
+      "/images/portfolio/sepu/gallery-2.jpeg",
+      "/images/portfolio/sepu/gallery-3.jpg",
+      "/images/portfolio/sepu/gallery-4.jpeg",
+      "/images/portfolio/sepu/gallery-5.jpeg",
+      "/images/portfolio/sepu/gallery-6.jpeg",
+      "/images/portfolio/sepu/gallery-8.jpeg",
+      "/images/portfolio/sepu/gallery-10.jpg",
     ],
 
     overview:
@@ -102,25 +97,20 @@ const portfolioData: Project[] = [
 
   {
     id: 3,
-
     slug: "private-residential-development",
-
     name: "Private Residential Development",
-
-    location: "Kenya",
-
+    location: "Kiambu, Kenya",
     status: "Completed",
-
     completionDate: "Completed",
 
     heroImage: "/images/portfolio/private/hero.jpeg",
     coverImage: "/images/portfolio/private/cover.jpeg",
 
     gallery: [
-    "/images/portfolio/private/gallery-1.JPG",
-    "/images/portfolio/private/gallery-2.JPG",
-    "/images/portfolio/private/gallery-3.JPG",
-    "/images/portfolio/private/gallery-4.jpeg",
+      "/images/portfolio/private/gallery-1.JPG",
+      "/images/portfolio/private/gallery-2.JPG",
+      "/images/portfolio/private/gallery-3.JPG",
+      "/images/portfolio/private/gallery-4.jpeg",
     ],
 
     overview:
