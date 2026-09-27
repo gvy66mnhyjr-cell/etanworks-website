@@ -8,29 +8,36 @@ export default function EquipmentOverview({
   overview,
 }: EquipmentOverviewProps) {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20">
-      <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+    <section className="relative overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 px-5 py-16 text-white sm:px-6 sm:py-20 md:py-24">
+      {/* Subtle illumination */}
+      <div className="pointer-events-none absolute -left-40 top-0 h-96 w-96 rounded-full bg-orange-600/8 blur-3xl" />
 
-        {/* Left */}
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
-            Equipment Overview
-          </p>
+      <div className="relative mx-auto max-w-7xl">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-20">
+          {/* Heading */}
+          <div>
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-orange-600" />
 
-          <h2 className="mt-4 text-4xl font-bold text-gray-900">
-            {name}
-          </h2>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
+                Equipment Overview
+              </p>
+            </div>
 
-          <div className="mt-8 h-1 w-20 rounded-full bg-orange-500" />
+            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+              {name}
+            </h2>
+
+            <div className="mt-6 h-1 w-16 rounded-full bg-orange-600 sm:mt-8 sm:w-20" />
+          </div>
+
+          {/* Description */}
+          <div className="border-l border-white/10 pl-6 sm:pl-8">
+            <p className="text-base leading-8 text-gray-300 sm:text-lg sm:leading-9">
+              {overview}
+            </p>
+          </div>
         </div>
-
-        {/* Right */}
-        <div>
-          <p className="text-lg leading-9 text-gray-600">
-            {overview}
-          </p>
-        </div>
-
       </div>
     </section>
   );

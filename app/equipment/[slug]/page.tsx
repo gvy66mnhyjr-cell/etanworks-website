@@ -48,6 +48,7 @@ export async function generateMetadata({
       description,
       url: `https://etanworks.co.ke/equipment/${equipment.slug}`,
       siteName: "Etanworks",
+
       images: [
         {
           url: equipment.heroImage,
@@ -56,6 +57,7 @@ export async function generateMetadata({
           alt: equipment.name,
         },
       ],
+
       locale: "en_KE",
       type: "website",
     },
@@ -73,6 +75,7 @@ export default async function EquipmentPage({
   params,
 }: EquipmentPageProps) {
   const { slug } = await params;
+
   const equipment = getEquipmentBySlug(slug);
 
   if (!equipment) {
@@ -84,7 +87,7 @@ export default async function EquipmentPage({
     .slice(0, 3);
 
   return (
-    <main className="bg-white">
+    <main className="min-h-screen bg-gray-950 text-white">
       <EquipmentHero
         name={equipment.name}
         category={equipment.category}
@@ -96,9 +99,14 @@ export default async function EquipmentPage({
         overview={equipment.overview}
       />
 
-      <EquipmentSpecs specifications={equipment.specifications} />
+      <EquipmentSpecs
+        specifications={equipment.specifications}
+      />
 
-      <EquipmentApplications applications={equipment.applications} />
+      <EquipmentApplications
+        name={equipment.name}
+        applications={equipment.applications}
+      />
 
       <EquipmentGallery
         coverImage={equipment.coverImage}
@@ -107,74 +115,78 @@ export default async function EquipmentPage({
       />
 
       {/* Related Equipment */}
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-8 md:py-28">
-        <div className="mb-12">
-          <div className="mb-4 flex items-center gap-3">
-            <span className="h-px w-8 bg-orange-600" />
+      <section className="relative overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 px-5 py-16 sm:px-6 sm:py-20 md:py-24">
+        <div className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-orange-600/5 blur-3xl" />
 
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-600">
-              Our Fleet
+        <div className="relative mx-auto max-w-7xl">
+          <div className="mb-10 max-w-3xl sm:mb-12">
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-orange-600" />
+
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
+                Our Fleet
+              </p>
+            </div>
+
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+              Related Equipment
+            </h2>
+
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-gray-400 sm:text-base">
+              Explore other machines available for earthmoving, construction
+              and infrastructure projects.
             </p>
           </div>
 
-          <h2 className="text-3xl font-bold tracking-tight text-gray-950 md:text-5xl">
-            Related Equipment
-          </h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {relatedEquipment.map((item) => (
+              <Link
+                key={item.id}
+                href={`/equipment/${item.slug}`}
+                className="group overflow-hidden rounded-2xl border border-white/10 bg-gray-950 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-orange-500/30 hover:shadow-2xl"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-gray-900">
+                  <Image
+                    src={item.coverImage}
+                    alt={item.name}
+                    fill
+                    sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
 
-          <p className="mt-5 max-w-2xl text-sm leading-6 text-gray-500 md:text-base">
-            Explore other machines available for earthmoving, construction
-            and infrastructure projects.
-          </p>
-        </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {relatedEquipment.map((item) => (
-            <Link
-              key={item.id}
-              href={`/equipment/${item.slug}`}
-              className="group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                <Image
-                  src={item.coverImage}
-                  alt={item.name}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-orange-400">
+                      {item.category}
+                    </p>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-sm font-medium text-white/80">
-                    {item.category}
-                  </p>
-
-                  <h3 className="mt-1 text-2xl font-bold tracking-tight text-white">
-                    {item.name}
-                  </h3>
+                    <h3 className="mt-1 text-2xl font-bold tracking-tight text-white">
+                      {item.name}
+                    </h3>
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex items-center justify-between p-6">
-                <span className="text-sm font-bold text-gray-900">
-                  View equipment
-                </span>
+                <div className="flex items-center justify-between border-t border-white/10 p-5 sm:p-6">
+                  <span className="text-sm font-bold text-white">
+                    View Equipment
+                  </span>
 
-                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-lg text-gray-700 transition-all duration-300 group-hover:border-orange-600 group-hover:bg-orange-600 group-hover:text-white">
-                  →
-                </span>
-              </div>
-            </Link>
-          ))}
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-lg text-gray-300 transition-all duration-300 group-hover:border-orange-600 group-hover:bg-orange-600 group-hover:text-white">
+                    →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-gray-950">
+      <section className="relative overflow-hidden bg-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.16),transparent_40%)]" />
 
-        <div className="relative mx-auto max-w-7xl px-6 py-20 md:px-8 md:py-24">
+        <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-20 md:py-24">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl">
               <div className="mb-4 flex items-center gap-3">
@@ -185,11 +197,11 @@ export default async function EquipmentPage({
                 </p>
               </div>
 
-              <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
                 Let&apos;s discuss your project.
               </h2>
 
-              <p className="mt-5 max-w-xl text-base leading-7 text-gray-400 md:text-lg">
+              <p className="mt-5 max-w-xl text-base leading-7 text-gray-400 sm:text-lg">
                 Talk to Etanworks about equipment requirements for your next
                 excavation, earthworks or construction project.
               </p>
@@ -197,9 +209,10 @@ export default async function EquipmentPage({
 
             <Link
               href="/#contact"
-              className="inline-flex w-fit items-center rounded-full bg-orange-600 px-7 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-orange-700 hover:shadow-lg hover:shadow-orange-600/20"
+              className="inline-flex w-fit items-center rounded-full bg-orange-600 px-7 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-600/20"
             >
               Request a Quote
+
               <span className="ml-3 text-lg">→</span>
             </Link>
           </div>
